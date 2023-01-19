@@ -1,0 +1,76 @@
+:root {
+    --width-room: 20vw;
+    --height-room: 20vw;
+    --primary-color: #C8ACD9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 500px;
+}
+
+.cubo {
+    position: absolute;
+    width: var(--width-room);
+    height: var(--height-room);
+    transform-style: preserve-3d;
+    transform-origin: 50% 50%;
+    margin-top: -10vw;
+    margin-left: -10vw;
+    animation: rotar3d 5s linear infinite;
+    line-height: 20vw;
+    font-size: 10vw;
+}
+
+.cara {
+    position: absolute;
+    width: var(--width-room);
+    height: var(--height-room);
+    transform-origin: 50% 50%;
+    background: var(--primary-color);
+    border:2px solid rgba(0,0,0,.25);
+    text-align:center;
+}
+
+.cara.frente {
+    transform: translate3d(0,0, calc(var(--width-room) / 2));
+}
+
+.cara.detras {
+    transform: translate3d(0,0, calc(-1 * var(--width-room) / 2));
+}
+
+.cara.izquierda {
+    transform: translate3d(calc(var(--width-room) / 2), 0, 0) rotate3d(0, 1, 0, 90deg);
+}
+
+.cara.derecha {
+    transform: translate3d(calc( -1 * var(--width-room) / 2), 0, 0) rotate3d(0, 1, 0, 90deg);
+}
+
+.cara.abajo {
+    transform: translate3d(0, calc(var(--width-room) / 2), 0) rotate3d(1, 0, 0, 90deg);
+}
+
+.cara.arriba {
+    transform: translate3d(0, calc( -1 * var(--width-room) / 2), 0) rotate3d(1, 0, 0, 90deg);
+}
+
+@keyframes rotar3d {
+    from {
+        transform: rotate3d(0, 0, 0, 0);
+    }
+    to {
+        transform: rotate3d(1, 1, 0, 360deg);
+    }
+}
